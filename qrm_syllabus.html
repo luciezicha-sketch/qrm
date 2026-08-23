@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syllabus — Quantitative Research Methods · Leiden University College</title>
+<meta name="description" content="Course syllabus for Quantitative Research Methods, Leiden University College The Hague, 2026/2027. Dr. Lucie Zicha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f3a33; --ink-mid:#2f5449; --slate:#4a5c56; --slate-lt:#71847d;
+  --paper:#fafaf8; --paper-dk:#eef0ea; --rule:#d9ddd3;
+  --accent:#a8571c; --accent-lt:#c26a2a; --link:#1f5d55;
+  --shadow-sm:0 1px 6px rgba(31,58,51,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Source Sans 3',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.container{max-width:860px;margin:0 auto;padding:0 3rem}
+
+nav{position:sticky;top:0;z-index:200;background:var(--ink);padding:0 3rem;
+  display:flex;align-items:center;justify-content:space-between;height:54px;
+  border-bottom:2px solid var(--accent)}
+.nav-brand{font-family:'Source Code Pro',monospace;font-size:.9rem;font-weight:500;
+  color:rgba(250,250,248,.85);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.nav-right{display:flex;gap:1.5rem;align-items:center}
+.nav-right a{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+  color:rgba(250,250,248,.55);text-decoration:none}
+.nav-right a:hover{color:#fff}
+
+.masthead{background:var(--ink);color:#fff;padding:3.6rem 3rem 2.8rem}
+.masthead-inner{max-width:860px;margin:0 auto}
+.masthead-kicker{font-family:'Source Code Pro',monospace;font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(250,250,248,.4);margin-bottom:1rem}
+.masthead h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.6rem);
+  font-weight:600;line-height:1.2;color:#fff;margin-bottom:1.6rem}
+.masthead-meta{display:flex;gap:2.4rem;flex-wrap:wrap;padding-top:1.6rem;
+  border-top:1px solid rgba(255,255,255,.1)}
+.meta-item{display:flex;flex-direction:column;gap:.15rem}
+.meta-label{font-family:'Source Code Pro',monospace;font-size:.6rem;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(250,250,248,.32)}
+.meta-value{font-size:.9rem;color:rgba(250,250,248,.9)}
+.meta-value a{color:var(--accent-lt);text-decoration:none}
+.meta-value a:hover{text-decoration:underline}
+
+.section-block{margin-top:3rem}
+.section-title{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.section-label{font-family:'Source Code Pro',monospace;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);
+  padding:.12rem .5rem;border-radius:2px}
+.section-title h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--ink)}
+h3.sub{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:600;
+  color:var(--ink);margin:1.5rem 0 .5rem}
+p.body{font-size:.98rem;color:var(--slate);margin-bottom:.9rem}
+p.body strong{color:var(--ink);font-weight:600}
+ul.body,ol.body{margin:0 0 .9rem 1.2rem;font-size:.98rem;color:var(--slate)}
+ul.body li,ol.body li{margin-bottom:.45rem}
+
+/* booking button */
+.book{display:inline-flex;align-items:center;gap:.45rem;background:var(--accent);color:#fff;
+  font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:.6rem 1.2rem;border-radius:2px;text-decoration:none;margin-top:.4rem;transition:background .15s}
+.book:hover{background:var(--accent-lt)}
+.book-note{font-size:.8rem;color:var(--slate-lt);margin-top:.5rem}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:.6rem 0 1rem;
+  background:#fff;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+th{font-family:'Source Code Pro',monospace;font-size:.6rem;letter-spacing:.13em;
+  text-transform:uppercase;text-align:left;color:#fff;background:var(--ink);
+  padding:.6rem .9rem;font-weight:500}
+td{padding:.6rem .9rem;border-top:1px solid var(--rule);color:var(--slate);vertical-align:top}
+td.k{color:var(--ink);font-weight:500}
+tr:nth-child(even) td{background:var(--paper)}
+
+/* callouts */
+.card{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.6rem;margin:1rem 0}
+.card.warn{background:#fdf3e9;border-color:#e8c9a6}
+.card.warn p{color:#7a4a20}
+.card.warn h3.sub{color:#7a3f10;margin-top:0}
+
+/* weekly overview */
+.week{background:#fff;border:1px solid var(--rule);border-radius:3px;margin-bottom:.7rem;
+  display:flex;align-items:stretch;overflow:hidden}
+.week-marker{background:var(--ink);color:rgba(250,250,248,.5);min-width:76px;padding:1rem .8rem;
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.wk-label{font-family:'Source Code Pro',monospace;font-size:.52rem;letter-spacing:.16em;
+  text-transform:uppercase;opacity:.7}
+.wk-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;line-height:1.1}
+.week-body{padding:1rem 1.4rem;flex:1;min-width:0}
+.week-body h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:600;
+  color:var(--ink);margin-bottom:.5rem}
+.week-body h4{font-family:'Source Code Pro',monospace;font-size:.6rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);margin:.9rem 0 .3rem}
+.week-body p{font-size:.92rem;color:var(--slate);margin-bottom:.4rem}
+.week-body p.none{color:var(--slate-lt);font-style:italic}
+
+footer{margin-top:4rem;padding:2rem 3rem;border-top:1px solid var(--rule);
+  font-size:.75rem;color:var(--slate-lt);display:flex;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;max-width:860px;margin-inline:auto}
+
+@media (max-width:820px){
+  .container,nav,.masthead,footer{padding-left:1.3rem;padding-right:1.3rem}
+  .masthead{padding-top:2.4rem}
+  .masthead-meta{gap:1.3rem}
+  .week{flex-direction:column}
+  .week-marker{flex-direction:row;gap:.5rem;min-width:0;padding:.5rem 1rem;justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+@media print{
+  nav{display:none}
+  body{background:#fff}
+  .masthead{background:#fff;color:var(--ink);padding-top:0;border-bottom:2px solid var(--ink)}
+  .masthead h1,.wk-num{color:var(--ink)}
+  .masthead-kicker,.meta-label{color:var(--slate-lt)}
+  .meta-value,.meta-value a{color:var(--ink)}
+  .week-marker{background:var(--paper-dk)}
+  .wk-label{color:var(--slate)}
+  th{background:var(--paper-dk);color:var(--ink)}
+  .section-block{break-inside:avoid}
+  .week{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="qrm-course-site.html">QRM</a>
+  <div class="nav-right">
+    <a href="#weekly">Weekly overview</a>
+    <a href="qrm-course-site.html">&larr; Back to course</a>
+  </div>
+</nav>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-kicker">Leiden University College The Hague &nbsp;·&nbsp; (2026/2027)</div>
+    <h1>Syllabus</h1>
+    <div class="masthead-meta">
+      <div class="meta-item"><span class="meta-label">Level</span><span class="meta-value">200</span></div>
+      <div class="meta-item"><span class="meta-label">Credits</span><span class="meta-value">5 ECTS</span></div>
+      <div class="meta-item"><span class="meta-label">Instructor</span><span class="meta-value">Dr. Lucie Zicha</span></div>
+      <div class="meta-item"><span class="meta-label">Email</span><span class="meta-value"><a href="mailto:l.zicha@luc.leidenuniv.nl">l.zicha@luc.leidenuniv.nl</a></span></div>
+      <div class="meta-item"><span class="meta-label">Room</span><span class="meta-value">4.09</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">Meeting time</span><h2>Sections</h2></div>
+    <table>
+      <tr><th>Section</th><th>Class times</th></tr>
+      <tr><td class="k">Section A</td><td>Monday: 9:15-11:00, Wednesday 9:15-11:00</td></tr>
+      <tr><td class="k">Section B</td><td>Monday: 11:15-13:00, Wednesday 11:15-13:00</td></tr>
+      <tr><td class="k">Section C</td><td>Monday 15:15-17:00, Thursday 11:15-13:00</td></tr>
+    </table>
+    <a class="book" href="https://outlook.office.com/bookwithme/user/6e5e679e8cda4d348370144900546a17@vuw.leidenuniv.nl/meetingtype/oWF_QPMeH0i-9aqfAWPzog2?anonymous&amp;ismsaljsauthenabled&amp;ep=mcard" target="_blank" rel="noopener">Book your office hours &rarr;</a>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">01</span><h2>Introduction</h2></div>
+    <p class="body">Today's world relies much on the accumulation, presentation, and interpretation of large quantities of information. Statistics is a tool that enables us to organize our data in an efficient manner, and provides us with methods that help us understand the relationships that occur in our data and our increasingly complex world. However, any useful statistical model is inextricably linked to well thought-through research question, logical argument, and testable hypotheses. The course focuses on developing students' ability to connect these crucial research design parts to ultimately fit a statistical model and draw valid conclusions. We will also discuss how to reason through the usefulness and the limitation of these models to answer a research question. Our discussions will revolve around the issue of sampling, measurement, model specification, and model fit. We will draw our examples from multiple disciplines, such as political science, economics, medical, and environmental science. The material in this course covers sampling, data display, more advanced issues in linear regression and logistic regression. Students will develop projects, applying their knowledge to real-world problems using elementary computer programming in the R statistical programming package.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">02</span><h2>General Objectives</h2></div>
+    <p class="body">This course is designed to be accessible for students at all levels of mathematical skill. The focus is put on developing conceptual understanding of statistics without heavy reliance on rigorous mathematical background. In the classical liberal arts sense, the knowledge obtained from this course prepares all students to reason through the usefulness as well as limitations of any quantitative research design. The course aims to start building students' autonomy and independence in answering real world questions using quantitative research. In addition, it provides a solid statistical background for students who wish to continue their statistical education with more advanced courses or those students who plan to perform their own statistical analyses in their coursework and beyond.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">03</span><h2>Learning Outcomes</h2></div>
+    <p class="body">Upon completion the course aims to provide the students with the following skills:</p>
+    <ol class="body">
+      <li>Understand scientific reasoning and research design, including theory formulation and hypothesis testing.</li>
+      <li>Critically analyze various types of data and learn to select most appropriate elementary statistical technique to answer research question;</li>
+      <li>Use statistical programming to enter data, generate descriptive statistics and graphs, and estimate basic statistical models.</li>
+      <li>Communicate and present statistical results to a variety of audiences</li>
+    </ol>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">04</span><h2>Class Organization</h2></div>
+    <h3 class="sub">Seminar sessions:</h3>
+    <p class="body">Our Monday sessions are seminar sessions. You are expected to come prepared to class!</p>
+    <p class="body">Prior to the seminar sessions students are expected to watch a short lecture video (if available for the week),  As you watch the videos, make sure to take notes. Highlight if necessary the parts that you did not understand. Additional textbook readings are recommended as a background reading for the statistical concepts introduced in the videos, offering additional details and depth.</p>
+    <p class="body">If video is not available for the week, students are expected to read the assigned reading. The video can be accessed through the QRM website. In class we will discuss the material in more detail. We will often spend most of the time on practical exercises designed to further deepen the understanding of the weekly topic. There will be minimal to no R work during seminar sessions.</p>
+    <h3 class="sub">Lab sessions:</h3>
+    <p class="body">Wednesday sessions will be lab sessions. Please, check which group you are in on Brightspace. Lab sessions will be entirely devoted to group replication projects. Students are expected to discuss their progress with the instructor and ask questions about their group projects. Note that our sessions will be intensive and focused on a small group. Thus, you are again expected to come prepared. The details for the group replication project are available in the Replication project handout on the QRM website.</p>
+    <p class="body">For each group project, students submit one pdf project write-up and Rscript on Brightspace.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">06</span><h2>Software Requirements</h2></div>
+    <p class="body">All the statistical work in this class must be done using R statistical software. Any work done in other statistical software will not be accepted and result in a grade deduction. Students will be required to install a copy of R statistical software and R-studio into their computers – both are free and open source. Appendix I contains instructions on how to install R and R-studio.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">07</span><h2>AI Disclosure</h2></div>
+    <p class="body">Artificial Intelligence (AI) tools may be used in this course under specific guidelines to ensure academic integrity and learning:</p>
+    <h3 class="sub">Permitted Uses</h3>
+    <p class="body"><strong>R Code Development:</strong> AI may assist in generating R scripts for statistical analyses. Students must annotate each line of code to explain its function, demonstrating understanding. Use simple, reproducible code to ensure you can explain and replicate it during exams.</p>
+    <p class="body"><strong>Text Editing:</strong> AI may be used for editing text (e.g., improving clarity of written assignments), but not for generating substantive content.</p>
+    <div class="card warn">
+      <h3 class="sub">Prohibited Uses:</h3>
+      <p class="body">AI must not be used to develop answers for replication assignments (e.g., interpreting results, discussing external validity). All analytical and interpretive work must reflect your own reasoning.</p>
+      <p class="body" style="margin-bottom:0"><strong>Testing and Accountability:</strong> The final exam will test your ability to reproduce and explain R code. Therefore, you are advised to use the replication assignments as an opportunity to practice these skills and use AI as a teaching tool.</p>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">08</span><h2>Phone and Laptop Policy</h2></div>
+    <p class="body">To maintain focus and engagement during class sessions, the following policy applies:</p>
+    <p class="body">Phones are strictly prohibited during all class sessions, including lectures, discussions, and group work. Phones must be silenced and stored away (e.g., in bags). For emergencies, students must step outside the classroom to use their phones.</p>
+    <p class="body">Laptops are permitted only during designated group work sessions (e.g., for collaborative replication work or data analysis). Laptops must remain closed during lectures, or seminars .</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">09</span><h2>Literature and Course Materials</h2></div>
+    <h3 class="sub">Required:</h3>
+    <p class="body">Jessica Utts, Robert F. Heckard. 2012. <em>Statistics</em>, 4th and International Edition, Paperback. Thomson/Brooks/Cole. (Other editions of this textbook are also allowed, but the chapter numbers may differ. It is the responsibility of the student to make the necessary adjustments)</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">10</span><h2>Assessments</h2></div>
+    <table>
+      <tr><th>Component</th><th>Weight</th><th>When</th></tr>
+      <tr><td class="k">Class participation</td><td>15%</td><td>Ongoing Weeks 1-7</td></tr>
+      <tr><td class="k">Replication project</td><td>30% (each 15%)</td><td>Weeks 2-7</td></tr>
+      <tr><td class="k">Midterm Exam</td><td>19%</td><td>Week 5</td></tr>
+      <tr><td class="k">Final Exam</td><td>36%</td><td>Week 8</td></tr>
+    </table>
+
+    <h3 class="sub">Group projects: Replication.</h3>
+    <p class="body">The application and use of statistical techniques cannot be viewed in isolation from the research question and the argument/theory proposed by the researcher. Utilizing statistical models thus depends on the context of the research problem. The group projects will consist of a replication assignment of a published quantitative study. In the lab seminars, students receive a dataset and replication handbook with instructions for each of the assignments. They are required to read the original article in week 1 and be prepared to discuss the article in the lab seminar. There will be a total of two replication assignments throughout the duration of the course and each will be submitted on a bi-weekly basis. Each assignment will focus on different statistical techniques introduced in class. It will not be a full exact replication. Instead students will replicate parts of the study. The aim of the replication assignments is threefold: 1) students learn to study and assess research design of a scientific study; 2) students practice statistical techniques and working with datasets in the context of a real research question; 3) students learn to recognize the consequences of research decisions on the findings.</p>
+    <p class="body">Each group submits one group assignment report in pdf. Project report must follow the instructions in the Replication Group Project Handbook available on the QRM website. The group project submission must also include a complete and working Rscript showing all statistical work included in the report. Students do not have to submit the datasets unless they have made changes to the dataset. The written report (in pdf) must not contain any Rcode and can only include finished tables and figures. Any research reports that include analyses or figures without a corresponding and functional Rscript will be deemed invalid resulting in a final grade deduction.</p>
+
+    <h3 class="sub">Midterm Exam.</h3>
+    <p class="body">In week 5, students will take an in-class midterm exam focused on their understanding of how statistical evidence is evaluated, including the construction of scientific arguments, hypothesis formation, data visualization interpretation, and statistical inference. Students will not use R for this quiz. The exam is designed to take approximately 60 minutes to complete.</p>
+
+    <h3 class="sub">Final exam:</h3>
+    <p class="body">In week 8, students will take an in-class final exam that covers their technical statistical knowledge, including interpreting statistical results and understanding the statistical theory underlying the models. Students will be asked to understand basic R code and identify issues with R output. The exam is closed book. Students are permitted to bring a calculator and a formula sheet.</p>
+
+    <h3 class="sub">Participation.</h3>
+    <p class="body">The participation grade is based entirely on students' demonstrated preparedness in seminar and lab sessions; that includes primarily the ability to ask relevant questions, answering instructor's questions, and contributing creative and thoughtful insights to in-class discussions. The participation assessment is not based on getting things right each time, but instead trying to engage with the material and demonstrating preparedness in each session.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">11</span><h2>Assignment Submission Policy</h2></div>
+    <p class="body">All assignments are submitted electronically via Brightspace.</p>
+    <ul class="body">
+      <li>For group projects, a penalty of one letter grade penalty for each day after the deadline applies.</li>
+      <li>NO EXTRA ASSIGNMENTS will be given to compensate for missed assignments or to improve on a grade of previous assignments.</li>
+    </ul>
+  </section>
+
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">12</span><h2>Academic Honesty</h2></div>
+    <p class="body">LUC's Honour code is stipulated in the LUC Student Handbook. My definition matches LUC's standard. In Quantitative Research Methods, the following rules apply:</p>
+    <ul class="body">
+      <li>The group projects are collaborative assignments. Students compile one document per group independently.</li>
+      <li>The midterm and final exam will be in-class and requires that students work alone, books and notes will not be permitted throughout the entire duration of the quiz and exam. Students will be allowed a formula sheet, and a calculator. Copying from another student will be penalized by a failing grade.</li>
+    </ul>
+    <p class="body">Plagiarism includes (but is not limited to) directly copying someone else's work without providing the appropriate citation, or paraphrasing someone else's argument without providing necessary citation. Ignorance regarding the rules of citation or the sources used in your paper is not an excuse and will be treated as any other case of plagiarism. If you have any concerns regarding the citation style and rules, come to see me in my office hours before the paper or assignment is due!</p>
+  </section>
+
+  <!-- WEEKLY OVERVIEW -->
+  <section class="section-block" id="weekly">
+    <div class="section-title"><span class="section-label">13</span><h2>Weekly Overview</h2></div>
+
+   <div class="week">
+  <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">1</span></div>
+  <div class="week-body">
+    <h3>Introduction to Scientific Reasoning</h3>
+    <h4>Seminar session</h4>
+    <p>We discuss the course expectations and review basics from the first year introductory course.</p>
+    <h4>Required reading</h4>
+    <p>No video available!<br>QRM Syllabus</p>
+    <h4>Lab seminar</h4>
+    <p>Required reading: Handout: on argument, hypotheses, and measurement</p>
+    <p>Lakatos, Imre. 1973. Science and Pseudoscience. Open University talk, transcript. <a href="http://www.inf.fu-berlin.de/lehre/pmo/eng/Lakatos-Science.pdf" target="_blank" rel="noopener">PDF</a></p>
+    <p>Feynman, Richard P. 1974. Cargo Cult Science. Caltech commencement address, Engineering and Science, Vol. 37(7): pp. 10-13. <a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm" target="_blank" rel="noopener">Full text</a></p>
+    <p>Recommended: An introduction to the exchange between Popper, Kuhn and Lakatos, on the <a href="qrm_week1_popper_kuhn_lakatos.html">QRM website</a>.</p>
+   
+  </div>
+</div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">2</span></div>
+      <div class="week-body">
+        <h3>Thinking Through Quantitative Study Design</h3>
+        <p><em>No video for this week!</em></p>
+        <h4>Seminar session</h4>
+        <p>We discuss different techniques to sampling, the type of sampling issues that different designs generate and/or ameliorate. We also cover the various approaches to collecting data, how to choose the best approach given the research question of interest.</p>
+        <h4>Required reading</h4>
+        <p>Utts/Heckard: Chapter 5: Sampling : Surveys and How to Ask Questions. Chapter 6: Gathering Useful Data for Examining Relationships.</p>
+        <p>Barbara, Geddes: How the Cases You Choose Affect the Answers You Get: Selection Bias in Comparative Politics Political Analysis. Vol. 2 (1990), pp. 131-150.</p>
+        <h4>Lab session</h4>
+        <p>We will do an in-depth discussion of the replication article and start the first group assignment. Make sure that you come prepared.</p>
+        <p>Required reading: Assigned replication article.</p>
+        <h4>Exams and Assignments</h4>
+        <p class="none">NONE</p>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">3</span></div>
+      <div class="week-body">
+        <h3>Data visualization</h3>
+        <p><em>No video for this week!</em></p>
+        <h4>Seminar session</h4>
+        <p>In this lecture session we discuss in depth the two articles included below. We discuss the issues in the data display and how to fix them, the lessons we learn and things to avoid in the future.</p>
+        <h4>Required reading</h4>
+        <p>Wainer, Howard. 1984. How to Display Data Badly, The American Statistician, Vol. 38(2): pp. 137-147.</p>
+        <p>Wainer and Zwerling (PDF) available from the QRM website.</p>
+        <h4>Lab session</h4>
+        <p>Discussion of the group projects.</p>
+        <h4>Recommended reading</h4>
+        <p class="none">NONE!</p>
+        <h4>Assignments and Exams</h4>
+        <p class="none">NONE!</p>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">4</span></div>
+      <div class="week-body">
+        <h3>Foundations of Multivariate Regression</h3>
+        <h4>Seminar session</h4>
+        <p>Required: Videos available!</p>
+        <h4>Recommended reading</h4>
+        <p>Utts/Heckard: Chapter 14: Inference About Simple Regression and Utts/Heckard: Multiple Regression (PDF available on QRM website). Utts/Heckard: Chapter 3: Relationship Between Quantitative Variables.</p>
+        <h4>Lab session</h4>
+        <p>Discussion of the group projects.</p>
+        <h4>Assignments and Exams</h4>
+        <p><strong>First replication group project due on Sunday at midnight!</strong> <a href="https://brightspace.universiteitleiden.nl/d2l/home" target="_blank" rel="noopener">Submit on Brightspace &rarr;</a></p>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">5</span></div>
+      <div class="week-body">
+        <h3>Linear Regression: Issues in Model Specification</h3>
+        <h4>Seminar session</h4>
+        <p>Required: Videos available!</p>
+        <h4>Required reading</h4>
+        <p>Christopher Dougherty: Introduction to Econometrics. Third Edition. Chapter 5: Dummy Variables. (Sections 5.1.- 5.3.) Oxford University Press. 2007 (available on QRM website).</p>
+        <h4>Recommended reading</h4>
+        <p>Uts/Heckard: Chapter 11: Estimating Means with Confidence. Chapter 13: Testing Hypotheses with Means.</p>
+        <h4>Lab session</h4>
+        <p>Discussion of the group projects.</p>
+        <h4>Assignments and Exams</h4>
+        <p><strong>Midterm on Monday in class!</strong></p>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">6</span></div>
+      <div class="week-body">
+        <h3>Comparing Groups: Analysis of Variance (ANOVA)</h3>
+        <h4>Seminar sessions</h4>
+        <p>In-class lecture</p>
+        <h4>Required reading</h4>
+        <p>Utts/Heckard: Chapter 16: Analysis of Variance.</p>
+        <h4>Lab session</h4>
+        <p>Discussion of the group projects.</p>
+        <h4>Assignments and Exams</h4>
+        <p class="none">—</p>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">7</span></div>
+      <div class="week-body">
+        <h3>Categorical Outcomes: Logistic Regression and Chi-squared Test</h3>
+        <h4>Seminar sessions</h4>
+        <p>Required: Videos available!</p>
+        <h4>Required reading</h4>
+        <p>Handout: Interpretation of Odds and Odds Ratios</p>
+        <h4>Recommended reading</h4>
+        <p>Utts/Heckard: Chapter 15: More About Inference for Categorical Variables.</p>
+        <h4>Lab session</h4>
+        <p>Recommended: Practice lab exercises</p>
+        <h4>Assignments and Exams</h4>
+<p><strong>Second replication group project due on Sunday at midnight!</strong> <a href="https://brightspace.universiteitleiden.nl/d2l/home" target="_blank" rel="noopener">Submit on Brightspace &rarr;</a></p>      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-marker"><span class="wk-label">Week</span><span class="wk-num">8</span></div>
+      <div class="week-body">
+        <h3>Review</h3>
+        <h4>Assignments and Exams</h4>
+        <p><strong>Final exam: TBA!</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Quantitative Research Methods · Leiden University College The Hague</span>
+    <span>2026/2027</span>
+  </footer>
+</div>
+</body>
+</html>

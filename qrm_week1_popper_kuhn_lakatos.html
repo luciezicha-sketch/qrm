@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popper, Kuhn and Lakatos — Reading Introduction · QRM</title>
+<meta name="description" content="An introduction to the Popper–Kuhn–Lakatos reader for Week 1 of Quantitative Research Methods, Leiden University College.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f3a33; --ink-mid:#2f5449; --slate:#4a5c56; --slate-lt:#71847d;
+  --paper:#fafaf8; --paper-dk:#eef0ea; --rule:#d9ddd3;
+  --accent:#a8571c; --accent-lt:#c26a2a; --link:#1f5d55;
+  --shadow-sm:0 1px 6px rgba(31,58,51,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Source Sans 3',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.container{max-width:800px;margin:0 auto;padding:0 3rem}
+
+nav{position:sticky;top:0;z-index:200;background:var(--ink);padding:0 3rem;
+  display:flex;align-items:center;justify-content:space-between;height:54px;
+  border-bottom:2px solid var(--accent)}
+.nav-brand{font-family:'Source Code Pro',monospace;font-size:.9rem;font-weight:500;
+  color:rgba(250,250,248,.85);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.nav-back{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+  color:rgba(250,250,248,.55);text-decoration:none}
+.nav-back:hover{color:#fff}
+
+.masthead{background:var(--ink);color:#fff;padding:3.6rem 3rem 3rem}
+.masthead-inner{max-width:800px;margin:0 auto}
+.masthead-kicker{font-family:'Source Code Pro',monospace;font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(250,250,248,.4);margin-bottom:1rem}
+.masthead h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:600;line-height:1.22;color:#fff;margin-bottom:1rem}
+.masthead h1 em{font-style:italic;color:var(--accent-lt)}
+.masthead-desc{font-size:1rem;color:rgba(250,250,248,.62);max-width:600px;line-height:1.82}
+
+.section-block{margin-top:3.2rem}
+.section-title{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem}
+.section-label{font-family:'Source Code Pro',monospace;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);
+  padding:.12rem .5rem;border-radius:2px}
+.section-title h2{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:var(--ink)}
+p.body{font-size:1rem;color:var(--slate);margin-bottom:1.05rem}
+p.body strong{color:var(--ink);font-weight:600}
+
+
+
+/* the abridgement warning */
+.notice{background:#fdf3e9;border:1px solid #e8c9a6;border-radius:3px;padding:1.4rem 1.7rem;margin:1.6rem 0}
+.notice h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:600;
+  color:#7a3f10;margin-bottom:.5rem}
+.notice p{font-size:.92rem;color:#7a4a20;margin-bottom:.6rem}
+.notice p:last-child{margin-bottom:0}
+
+.reader-card{background:var(--ink);border-radius:4px;padding:1.8rem 2.2rem;display:flex;
+  align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;margin-top:1.5rem}
+.reader-card-text h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;
+  font-weight:600;margin-bottom:.35rem}
+.reader-card-text p{color:rgba(250,250,248,.6);font-size:.87rem;max-width:440px}
+.btn-primary{display:inline-flex;align-items:center;gap:.45rem;background:var(--accent);color:#fff;
+  font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.6rem 1.3rem;border-radius:2px;text-decoration:none;white-space:nowrap;transition:background .15s}
+.btn-primary:hover{background:var(--accent-lt)}
+
+/* bibliography */
+.biblio{margin-top:1.3rem}
+.biblio-group{margin-bottom:1.6rem}
+.biblio-group h3{font-family:'Source Code Pro',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate-lt);margin-bottom:.7rem}
+.biblio ul{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.biblio li{font-size:.9rem;color:var(--slate);padding-left:1rem;border-left:2px solid var(--rule);line-height:1.65}
+.biblio li strong{color:var(--ink);font-weight:600}
+.biblio li .note{display:block;font-size:.82rem;color:var(--slate-lt);font-style:italic;margin-top:.2rem}
+.biblio li.key{border-left-color:var(--accent)}
+
+footer{margin-top:4rem;padding:2rem 3rem;border-top:1px solid var(--rule);
+  font-size:.75rem;color:var(--slate-lt);display:flex;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;max-width:800px;margin-inline:auto}
+
+@media (max-width:820px){
+  .container,nav,.masthead,footer{padding-left:1.4rem;padding-right:1.4rem}
+  .masthead{padding-top:2.4rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+@media print{nav{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="qrm-course-site.html">QRM</a>
+  <a class="nav-back" href="qrm-course-site.html#material">&larr; Back to course</a>
+</nav>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-kicker">Week 1 &nbsp;·&nbsp; Introduction to Scientific Reasoning</div>
+    <h1>Popper, Kuhn and <em>Lakatos</em></h1>
+    <p class="masthead-desc">How do we come to know the natural world, and by what standard is one
+      account of it judged better than another? The extracts set for this week enter a defining
+      twentieth-century debate on what separates science from its imitations — and on whether that
+      line can be drawn at all.</p>
+  </div>
+</div>
+
+<div class="container">
+
+ <!-- 01 INTRODUCTION -->
+<section class="section-block">
+  <div class="section-title"><span class="section-label">01</span><h2>Introduction</h2></div>
+  <p class="body">Lakatos writes in reply to both Popper and Kuhn. His essays are best read not
+    as a position argued in isolation, but as one voice in a sustained exchange between the three
+    over how scientific knowledge is best achieved and how it may be appraised.</p>
+  <p class="body">You might reasonably ask what a dispute in the philosophy of science from the
+    1970s is doing in week 1 of a methods course. The reason is that judging the quality of
+    evidence, and the accuracy of the claims drawn from it, is never merely a matter of finding
+    technical faults in a model. It requires attention to how the research was set up in the
+    first place.</p>
+  <p class="body">A degenerating programme, in Lakatos's account, is one whose theories are
+    <strong>fabricated after the event to accommodate facts already known</strong>, and then
+    defended by adding qualifications each time the result fails to hold. It is a description of
+    what it looks like to bend or cherry pick the facts to fit a narrative — a narrative that may be scientific,
+    ideological, or both at once. Whether that has happened in a particular literature is exactly
+    the kind of question you will be asked to judge, with data in front of you, later in the
+    course.</p>
+  <p class="body">Read it alongside Feynman's <em>Cargo Cult Science</em>, also set for this week.
+    Lakatos gives you the problem in the abstract — what separates a progressive research
+    programme from a degenerating one. Feynman gives you the same idea as a matter of personal
+    conduct: report what might invalidate your result, publish whichever way it comes out, and
+    remember that <em>the first principle is that you must not fool yourself — and you are the
+    easiest person to fool. </em>.</p>
+</section>
+  
+  <!-- 04 THE READER -->
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">02</span><h2>The reader</h2></div>
+
+    <div class="notice">
+      <h3>These are the authors' own short statements, not their full works</h3>
+      <p>Each piece in the reader is a lecture, a broadcast talk or an address in which the author
+        set out his position for a general audience. Lakatos's <em>Science and Pseudoscience</em>,
+        for instance, was written to be read aloud on the radio.</p>
+      <p>These pieces are published and properly citable in their own right, but consult the context of the full statement before
+        you decide to use these in your own argument to avoid misunderstanding.</p>
+    </div>
+
+    <div class="reader-card">
+      <div class="reader-card-text">
+        <h3>Popper, Kuhn and Lakatos — course reader</h3>
+        <p>The set pieces for this week, collected in one PDF.</p>
+      </div>
+      <a class="btn-primary" href="https://drive.google.com/file/d/1oj-dZXpZ2HJv8LR63WGIJz51N9dhLcvH/view?usp=sharing" target="_blank" rel="noopener">Open the reader &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 05 BIBLIOGRAPHY -->
+  <section class="section-block">
+    <div class="section-title"><span class="section-label">03</span><h2> The Full Works</h2></div>
+    <p class="body">Additional bibliography. None of this is required reading. It is here so that
+      you can see where each of these positions is developed at length, and so that anyone who
+      wants to follow the argument properly knows where to go.</p>
+
+    <div class="biblio">
+      <div class="biblio-group">
+        <h3>Start here if you read only one</h3>
+        <ul>
+          <li class="key"><strong>Lakatos, I., &amp; Musgrave, A. (eds.) (1970).</strong>
+            <em>Criticism and the Growth of Knowledge.</em> Cambridge University Press.
+            <span class="note">The proceedings of the 1965 London colloquium where the dispute
+              actually happened. Contains Kuhn's "Logic of Discovery or Psychology of Research?",
+              Popper's reply "Normal Science and its Dangers", and Lakatos's long essay
+              "Falsification and the Methodology of Scientific Research Programmes". The three
+              positions in one volume, arguing with each other directly.</span></li>
+        </ul>
+      </div>
+
+      <div class="biblio-group">
+        <h3>Popper</h3>
+        <ul>
+          <li><strong>Popper, K. R. (1959).</strong> <em>The Logic of Scientific Discovery.</em>
+            Hutchinson. <span class="note">Originally published as <em>Logik der Forschung</em>, 1934.
+            The falsifiability argument in full.</span></li>
+          <li><strong>Popper, K. R. (1963).</strong> <em>Conjectures and Refutations: The Growth of
+            Scientific Knowledge.</em> Routledge. <span class="note">More accessible than the
+            <em>Logic</em>. The opening essay is the usual place to start.</span></li>
+        </ul>
+      </div>
+
+      <div class="biblio-group">
+        <h3>Kuhn</h3>
+        <ul>
+          <li><strong>Kuhn, T. S. (1962).</strong> <em>The Structure of Scientific Revolutions.</em>
+            University of Chicago Press. <span class="note">The source of "paradigm" and "paradigm
+            shift". The 1970 second edition adds a postscript replying to critics, including
+            Lakatos.</span></li>
+        </ul>
+      </div>
+
+      <div class="biblio-group">
+        <h3>Lakatos</h3>
+        <ul>
+          <li><strong>Lakatos, I. (1978).</strong> <em>The Methodology of Scientific Research
+            Programmes: Philosophical Papers, Volume 1.</em> Edited by J. Worrall &amp; G. Currie.
+            Cambridge University Press. <span class="note">Published after his death. The full
+            statement of hard cores, protective belts, and progressive versus degenerating
+            programmes. "Science and Pseudoscience" appears here as the introduction.</span></li>
+          <li><strong>Lakatos, I. (1976).</strong> <em>Proofs and Refutations: The Logic of
+            Mathematical Discovery.</em> Cambridge University Press. <span class="note">Not about
+            the sciences, but the clearest demonstration of how he thought knowledge actually
+            grows. Written as a classroom dialogue.</span></li>
+        </ul>
+      </div>
+
+      <div class="biblio-group">
+        <h3>Feynman</h3>
+        <ul>
+          <li><strong>Feynman, R. P. (1974).</strong> Cargo Cult Science.
+            <em>Engineering and Science</em>, 37(7), 10–13.
+            <span class="note">The Caltech commencement address, in the original.</span></li>
+          <li><strong>Feynman, R. P. (1985).</strong> <em>Surely You're Joking, Mr. Feynman!</em>
+            W. W. Norton. <span class="note">The address is reprinted as the closing chapter.</span></li>
+        </ul>
+      </div>
+
+      <div class="biblio-group">
+        <h3>The fourth voice</h3>
+        <ul>
+          <li><strong>Feyerabend, P. (1975).</strong> <em>Against Method.</em> New Left Books.
+            <span class="note">Lakatos's friend and opponent, who concluded that no methodological
+            rule has survived contact with the history of science. The two planned to publish a
+            debate together; Lakatos died before it was written.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Quantitative Research Methods · Leiden University College The Hague</span>
+    <span>Week 1 · Reading introduction</span>
+  </footer>
+</div>
+</body>
+</html>

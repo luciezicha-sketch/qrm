@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantitative Research Methods — Leiden University College</title>
+<meta name="description" content="Quantitative Research Methods, a 200-level course at Leiden University College taught by Dr. Lucie Zicha. Course materials, lecture videos, R scripts, datasets and the replication project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   QRM — same typographic system as AQRM, deliberately different palette.
+   AQRM is navy + crimson. QRM is deep pine + burnt amber, so the two
+   courses read as siblings without being confused for one another.
+   ═══════════════════════════════════════════════════════════════════ */
+:root{
+  --ink:       #1f3a33;
+  --ink-mid:   #2f5449;
+  --slate:     #4a5c56;
+  --slate-lt:  #71847d;
+  --paper:     #fafaf8;
+  --paper-dk:  #eef0ea;
+  --rule:      #d9ddd3;
+  --accent:    #a8571c;
+  --accent-lt: #c26a2a;
+  --link:      #1f5d55;
+  --shadow-sm: 0 1px 6px rgba(31,58,51,0.08);
+  --shadow:    0 4px 20px rgba(31,58,51,0.10);
+  --shadow-lg: 0 8px 36px rgba(31,58,51,0.13);
+}
+*{margin:0; padding:0; box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:70px}
+body{font-family:'Source Sans 3',sans-serif; background:var(--paper); color:var(--ink); line-height:1.75}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.container{max-width:1080px; margin:0 auto; padding:0 3rem}
+
+/* ── nav ── */
+nav{position:sticky; top:0; z-index:200; background:var(--ink); padding:0 3rem;
+  display:flex; align-items:center; justify-content:space-between; height:54px;
+  border-bottom:2px solid var(--accent)}
+.nav-brand{font-family:'Source Code Pro',monospace; font-size:.9rem; font-weight:500;
+  color:rgba(250,250,248,.85); letter-spacing:.12em; text-transform:uppercase; text-decoration:none}
+.nav-links{display:flex; gap:1.7rem}
+.nav-links a{font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; font-weight:500;
+  color:rgba(250,250,248,.55); text-decoration:none; transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-toggle{display:none; background:none; border:0; color:rgba(250,250,248,.8);
+  font-family:'Source Code Pro',monospace; font-size:.72rem; letter-spacing:.1em;
+  text-transform:uppercase; cursor:pointer}
+
+/* ── masthead ── */
+.masthead{background:var(--ink); color:#fff; padding:4.5rem 3rem 3.5rem}
+.masthead-inner{max-width:1080px; margin:0 auto}
+.masthead-kicker{font-family:'Source Code Pro',monospace; font-size:.68rem; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(250,250,248,.4); margin-bottom:1rem}
+.masthead h1{font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,2.9rem);
+  font-weight:600; line-height:1.2; letter-spacing:-.01em; color:#fff; margin-bottom:1.2rem}
+.masthead h1 em{font-style:italic; color:var(--accent-lt)}
+.masthead-desc{font-size:1rem; color:rgba(250,250,248,.62); max-width:640px; line-height:1.82; margin-bottom:2.2rem}
+.masthead-meta{display:flex; gap:2.5rem; flex-wrap:wrap; padding-top:1.8rem;
+  border-top:1px solid rgba(255,255,255,.1)}
+.meta-item{display:flex; flex-direction:column; gap:.15rem}
+.meta-label{font-family:'Source Code Pro',monospace; font-size:.6rem; letter-spacing:.15em;
+  text-transform:uppercase; color:rgba(250,250,248,.32)}
+.meta-value{font-size:.9rem; color:rgba(250,250,248,.9)}
+.meta-value a{color:var(--accent-lt); text-decoration:none}
+.meta-value a:hover{text-decoration:underline}
+
+/* ── sections ── */
+.section-block{margin-top:3.8rem}
+.section-title{display:flex; align-items:center; gap:.9rem; margin-bottom:1.6rem}
+.section-label{font-family:'Source Code Pro',monospace; font-size:.62rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); border:1px solid var(--accent);
+  padding:.12rem .5rem; border-radius:2px}
+.section-title h2{font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600;
+  color:var(--ink); letter-spacing:-.01em}
+.overview-text{font-size:1rem; color:var(--slate); max-width:720px; margin-bottom:1.1rem}
+.overview-text strong{color:var(--ink); font-weight:600}
+
+/* ── objectives ── */
+.objectives{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px;
+  overflow:hidden; margin-top:1.8rem}
+.obj-card{background:#fff; padding:1.3rem 1.5rem}
+.obj-num{font-family:'Source Code Pro',monospace; font-size:.62rem; color:var(--accent);
+  letter-spacing:.12em; display:block; margin-bottom:.5rem}
+.obj-card h3{font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; margin-bottom:.4rem}
+.obj-card p{font-size:.85rem; color:var(--slate-lt); line-height:1.7}
+
+/* ── syllabus card ── */
+.syllabus-card{background:var(--ink); border-radius:4px; padding:2rem 2.4rem; display:flex;
+  align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap}
+.syllabus-card-text h3{font-family:'Playfair Display',serif; color:#fff; font-size:1.15rem;
+  font-weight:600; margin-bottom:.4rem}
+.syllabus-card-text p{color:rgba(250,250,248,.6); font-size:.88rem; max-width:520px}
+.btn-primary{display:inline-flex; align-items:center; gap:.45rem; background:var(--accent);
+  color:#fff; font-size:.74rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  padding:.6rem 1.3rem; border-radius:2px; text-decoration:none; white-space:nowrap; transition:background .15s}
+.btn-primary:hover{background:var(--accent-lt)}
+
+/* ── week accordion ── */
+.week-list{border-top:1px solid var(--rule)}
+.week-item{border:1px solid var(--rule); border-top:none; background:#fff}
+.week-trigger{display:flex; align-items:stretch; cursor:pointer; user-select:none;
+  width:100%; text-align:left; background:none; border:none; padding:0; font:inherit; color:inherit}
+.week-marker{background:var(--ink); color:rgba(250,250,248,.5); min-width:76px; padding:1rem 1.1rem;
+  flex-shrink:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  align-self:stretch; transition:background .2s}
+.week-item.open .week-marker{background:var(--accent)}
+.wk-label{font-family:'Source Code Pro',monospace; font-size:.52rem; letter-spacing:.16em;
+  text-transform:uppercase; opacity:.7}
+.wk-num{font-family:'Playfair Display',serif; font-size:1.5rem; color:#fff; line-height:1.1}
+.week-info{flex:1; padding:1rem 1.3rem; min-width:0}
+.week-title{font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:600; color:var(--ink)}
+.week-subtitle{font-size:.8rem; color:var(--slate-lt); margin-top:.15rem}
+.week-chevron{display:flex; align-items:center; padding-right:1.3rem; color:var(--slate-lt);
+  font-size:.65rem; transition:transform .2s}
+.week-item.open .week-chevron{transform:rotate(180deg)}
+.week-body{display:none; padding:0 1.3rem 1.4rem 1.3rem; border-top:1px solid var(--paper-dk)}
+.week-item.open .week-body{display:block}
+.week-note{font-size:.85rem; color:var(--slate-lt); padding:.9rem 0 0; font-style:italic}
+.res-section{font-family:'Source Code Pro',monospace; font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--slate-lt); margin:1.2rem 0 .6rem}
+.res-list{display:flex; flex-direction:column; gap:.4rem}
+.res-row{display:flex; align-items:center; gap:.9rem; padding:.65rem .9rem; background:#fff;
+  border:1px solid var(--rule); border-radius:2px; transition:border-color .15s, box-shadow .15s}
+.res-row:hover{border-color:var(--accent); box-shadow:var(--shadow-sm)}
+.res-type{font-family:'Source Code Pro',monospace; font-size:.58rem; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; padding:.18rem .5rem; border-radius:2px;
+  flex-shrink:0; white-space:nowrap}
+.type-video{background:#ede7f6; color:#4b3b8f}
+.type-pdf{background:#fdeee2; color:#8a4513}
+.type-doc{background:#e6f0ec; color:#1f5d55}
+.res-info{flex:1; min-width:0; display:flex; flex-direction:column}
+.res-name{font-size:.9rem; font-weight:500; color:var(--ink)}
+.res-desc{font-size:.76rem; color:var(--slate-lt)}
+.res-req{font-family:'Source Code Pro',monospace; font-size:.55rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); margin-left:.5rem}
+.res-req.rec{color:var(--slate-lt)}
+.btn-dl{display:inline-flex; align-items:center; gap:.3rem; background:var(--ink); color:#fff;
+  font-size:.68rem; font-weight:600; letter-spacing:.07em; text-transform:uppercase;
+  padding:.32rem .8rem; border-radius:2px; text-decoration:none; flex-shrink:0;
+  white-space:nowrap; border:none; cursor:pointer; font-family:inherit; transition:background .15s}
+.btn-dl:hover{background:var(--accent)}
+.res-row.offline{background:var(--paper-dk); border-style:dashed}
+.stage{display:none; margin-top:.5rem; border:1px solid var(--rule); border-radius:2px;
+  overflow:hidden; background:#0d1a17}
+.stage.open{display:block}
+.stage video{display:block; width:100%; max-height:70vh; background:#000}
+.stage iframe{display:block; width:100%; height:min(76vh,880px); border:0; background:#fff}
+.stage .fail{padding:1rem; color:#f6ded4; font-size:.85rem; background:#4a2318}
+.stage .fail a{color:#ffd9c6}
+
+/* ── project ── */
+.project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden}
+.project-card{background:#fff; padding:1.4rem 1.5rem; text-decoration:none; color:var(--ink);
+  display:block; transition:background .15s}
+.project-card:hover{background:var(--paper-dk)}
+.project-card-label{font-family:'Source Code Pro',monospace; font-size:.58rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.5rem}
+.project-card h3{font-family:'Playfair Display',serif; font-size:.98rem; font-weight:600; margin-bottom:.3rem}
+.project-card p{font-size:.8rem; color:var(--slate-lt); line-height:1.65}
+.project-card-arrow{color:var(--accent); font-size:.8rem; margin-top:.6rem; display:inline-block}
+.readings{margin-top:1.6rem; background:#fff; border:1px solid var(--rule); border-radius:3px; padding:1.5rem 1.8rem}
+.readings h3{font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; margin-bottom:.7rem}
+.readings ul{list-style:none; display:flex; flex-direction:column; gap:.7rem}
+.readings li{font-size:.88rem; color:var(--slate); padding-left:1rem; border-left:2px solid var(--rule)}
+
+.submit-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.6rem 0 1rem;
+  background:#fff;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.submit-table th{font-family:'Source Code Pro',monospace;font-size:.58rem;letter-spacing:.13em;
+  text-transform:uppercase;text-align:left;color:#fff;background:var(--ink);
+  padding:.55rem .9rem;font-weight:500}
+.submit-table td{padding:.6rem .9rem;border-top:1px solid var(--rule);color:var(--slate)}
+.submit-table td.k{color:var(--ink);font-weight:500}
+.submit-table tr:nth-child(even) td{background:var(--paper)}
+/* ── contact ── */
+.contact-block{background:#fff; border:1px solid var(--rule); border-radius:3px;
+  padding:1.8rem 2.2rem; display:flex; align-items:flex-start; gap:2rem; flex-wrap:wrap}
+.contact-initials{font-family:'Playfair Display',serif; font-size:2rem; color:#fff;
+  background:var(--ink); width:64px; height:64px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0}
+.contact-info h3{font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:600; margin-bottom:.5rem}
+.contact-info p{font-size:.88rem; color:var(--slate); margin-bottom:.2rem}
+footer{margin-top:4.5rem; padding:2rem 3rem; border-top:1px solid var(--rule);
+  font-size:.75rem; color:var(--slate-lt); display:flex; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap; max-width:1080px; margin-inline:auto}
+
+@media (max-width:820px){
+  .container,nav,.masthead,footer{padding-left:1.4rem; padding-right:1.4rem}
+  .nav-links{display:none; position:absolute; top:54px; left:0; right:0; background:var(--ink);
+    flex-direction:column; gap:0; padding:.5rem 1.4rem 1rem; border-bottom:2px solid var(--accent)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.6rem 0}
+  .nav-toggle{display:block}
+  .masthead{padding-top:3rem}
+  .masthead-meta{gap:1.4rem}
+  .res-row{flex-wrap:wrap}
+  .week-info{padding:.8rem 1rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}
+  html{scroll-behavior:auto}}
+@media print{nav,.week-chevron,.btn-dl,.stage{display:none!important}
+  .week-body{display:block!important} body{background:#fff}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#top">QRM</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#overview">Overview</a>
+    <a href="#syllabus">Syllabus</a>
+    <a href="#material">Material</a>
+    <a href="#rstart">R</a>
+    <a href="#project">Project</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="masthead" id="top">
+  <div class="masthead-inner">
+    <div class="masthead-kicker">Leiden University College The Hague &nbsp;·&nbsp; 2026/2027</div>
+    <h1>Quantitative <em>Research</em> Methods</h1>
+    <p class="masthead-desc">An introduction to quantitative research methods built around the fundamentals of scientific reasoning.  The course is an introduction to sampling, measurement, data visualization, multivariate regression, ANOVA and modelling categorical outcomes </p>
+    <div class="masthead-meta">
+      <div class="meta-item"><span class="meta-label">Instructor</span><span class="meta-value">Dr. Lucie Zicha</span></div>
+      <div class="meta-item"><span class="meta-label">Email</span><span class="meta-value"><a href="mailto:l.zicha@luc.leidenuniv.nl">l.zicha@luc.leidenuniv.nl</a></span></div>
+      <div class="meta-item"><span class="meta-label">Level</span><span class="meta-value">200</span></div>
+      <div class="meta-item"><span class="meta-label">Software</span><span class="meta-value">R</span></div>
+      <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">7 weeks</span></div>
+<div class="meta-item"><span class="meta-label">Office hours</span><span class="meta-value"><a href="https://outlook.office.com/bookwithme/user/6e5e679e8cda4d348370144900546a17@vuw.leidenuniv.nl/meetingtype/oWF_QPMeH0i-9aqfAWPzog2?anonymous&amp;ismsaljsauthenabled&amp;ep=mcard" target="_blank" rel="noopener">Book &rarr;</a></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+ <!-- 01 OVERVIEW -->
+<section class="section-block" id="overview">
+  <div class="section-title"><span class="section-label">01</span><h2>Course Overview</h2></div>
+  <p class="overview-text">Today's world runs on the accumulation, presentation and interpretation
+    of information at enormous scale. Statistics offers a way to organise that material and to
+    understand the relationships within it. But no statistical model stands alone: each is
+    inextricably tied to a well-considered research question, a logical argument, and hypotheses
+    that can be tested.</p>
+  <p class="overview-text">This course develops your ability to connect those parts of a research
+    design,  to fit a model that enables you to draw reasonable conclusions, and reason
+    through the limitations of any model you build. Our discussions include sampling, measurement,
+    model specification and model fit, drawing examples from political science, economics,
+    medicine and environmental science.</p>
+  <p class="overview-text">No particular mathematical background is assumed; the emphasis falls on
+    conceptual understanding rather than formal derivation. <strong>Work is carried out in R</strong>,
+    applied to real research problems.</p>
+  <div class="objectives">
+  <div class="obj-card"><span class="obj-num">01</span><h3>Scientific reasoning</h3>
+    <p>Develop logical arguments, derive testable hypotheses, and select measurements that fit the concept.</p></div>
+  <div class="obj-card"><span class="obj-num">02</span><h3>Statistical modelling</h3>
+    <p>Choose and fit the statistical technique suited to the question.</p></div>
+  <div class="obj-card"><span class="obj-num">03</span><h3>Careful interpretation</h3>
+   <p>Discern what your results mean, and convey it accurately to specialist and lay readers.</p></div>
+  <div class="obj-card"><span class="obj-num">04</span><h3>Understanding limitations</h3>
+    <p>Recognise how sampling, measurement and model choices shape the findings they produce.</p></div>
+</div>
+</section>
+
+  <!-- 02 SYLLABUS -->
+  <section class="section-block" id="syllabus">
+    <div class="section-title"><span class="section-label">02</span><h2>Syllabus</h2></div>
+    <div class="syllabus-card">
+      <div class="syllabus-card-text">
+        <h3>Full course syllabus</h3>
+        <p>Meeting times, assessment weighting, deadlines, the complete reading list and course policies.</p>
+      </div>
+      <a class="btn-primary" href="qrm_syllabus.html">Open syllabus &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 03 MATERIAL -->
+  <section class="section-block" id="material">
+    <div class="section-title"><span class="section-label">03</span><h2>Class Material</h2></div>
+    <p class="overview-text">Videos play in the page and documents open in the page. Nothing is
+      downloaded until you ask for it.</p>
+    <div class="week-list" id="weekList"></div>
+  </section>
+
+  <!-- 04 GETTING STARTED WITH R -->
+  <section class="section-block" id="rstart">
+    <div class="section-title"><span class="section-label">04</span><h2>Getting Started with R</h2></div>
+    <p class="overview-text">Work through these on your own to prepare for the work in the course and the final exam. The reference script covers all the categories of R work for this course; the Spot the mistake is an online quiz where you can test if you have understood the basics.</p>
+    <div class="project-grid">
+      <a class="project-card" href="qrm_getting_started.R" download>
+        <span class="project-card-label">R script</span>
+        <h3>Getting started with R</h3>
+        <p>Best practice, importing, cleaning, wide and long format, searching, sorting and merging.</p>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="qrm_practice_spot_the_mistake.html">
+        <span class="project-card-label">Worksheet</span>
+        <h3>Spot the Mistake</h3>
+        <p>Twenty-six pieces of broken code to diagnose and repair.</p>
+        <span class="project-card-arrow">Open &rarr;</span></a>
+      <a class="project-card" href="qrm_datasets_codebook.md" download>
+        <span class="project-card-label">Codebook</span>
+        <h3>Practice datasets</h3>
+        <p>What every variable means, and every problem deliberately planted in the four practice files.</p>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+    </div>
+    <div class="project-grid" style="margin-top:1px">
+      <a class="project-card" href="qrm_students_clean.csv" download>
+        <span class="project-card-label">CSV · simple</span><h3>qrm_students_clean.csv</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="qrm_survey_messy.csv" download>
+        <span class="project-card-label">CSV · awkward</span><h3>qrm_survey_messy.csv</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="qrm_gdp_wide.csv" download>
+        <span class="project-card-label">CSV · reshaping</span><h3>qrm_gdp_wide.csv</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="qrm_country_indicators.csv" download>
+        <span class="project-card-label">CSV · merging</span><h3>qrm_country_indicators.csv</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- 05 PROJECT -->
+  <section class="section-block" id="project">
+    <div class="section-title"><span class="section-label">05</span><h2>Replication Project</h2></div>
+    <p class="overview-text">Replicate results from a published peer reviewed article.</p>
+    <div class="readings">
+      <h3>Replication articles</h3>
+      <ul>
+        <li><strong>Schmitt, D. P., Realo, A., Voracek, M., &amp; Allik, J. (2008).</strong> Why can't a man be more like a woman? Sex differences in Big Five personality traits across 55 cultures. <em>Journal of Personality and Social Psychology</em>, 94(1), 168–182.</li>
+        <li><strong>Berggren, M., &amp; Bergh, R. (2025).</strong> Simpson's gender-equality paradox. <em>PNAS</em>, 122(23), <a href="https://doi.org/10.1073/pnas.2422247122" target="_blank" rel="noopener">e2422247122</a>. You will also need its Supplementary Information appendix.</li>
+      </ul>
+    </div>
+    <div style="margin-top:1.6rem">
+      <a class="btn-primary" href="qrm_replication_assignment_preview.html">Read the assignment &rarr;</a>
+    </div>
+    <div class="project-grid" style="margin-top:1.6rem">
+      <a class="project-card" href="schmitt_2008_table1.csv" download>
+        <span class="project-card-label">CSV</span><h3>schmitt_2008_table1.csv</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="SGEP_cultural_regions.txt" download>
+        <span class="project-card-label">Tab separated</span><h3>SGEP_cultural_regions.txt</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="Developmental_variables.txt" download>
+        <span class="project-card-label">Tab separated</span><h3>Developmental_variables.txt</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+      <a class="project-card" href="SGEP_additional_variables.txt" download>
+        <span class="project-card-label">Tab separated</span><h3>SGEP_additional_variables.txt</h3>
+        <span class="project-card-arrow">Download &rarr;</span></a>
+    </div>
+    <h4 class="res-section" style="margin-top:2rem">Submission</h4>
+<table class="submit-table">
+  <tr><th>Assignment</th><th>Due</th><th>Submit</th></tr>
+  <tr>
+    <td class="k">First replication group project</td>
+    <td>Week 4 · Sunday at midnight</td>
+    <td><a href="https://brightspace.universiteitleiden.nl/d2l/home" target="_blank" rel="noopener">SUBMIT&rarr;</a></td>
+  </tr>
+  <tr>
+    <td class="k">Second replication group project</td>
+    <td>Week 7 · Sunday at midnight</td>
+    <td><a href="https://brightspace.universiteitleiden.nl/d2l/home" target="_blank" rel="noopener">SUBMIT &rarr;</a></td>
+  </tr>
+</table>
+<p class="overview-text" style="font-size:.88rem">Each group submits one PDF report and a
+  complete, working R script. The report must contain no R code, only finished tables and
+  figures and written text. Analyses or figures with no corresponding functional Rscript will be
+  deemed invalid. A penalty of one letter grade applies for each day after the deadline.</p>
+  </section>
+
+  <!-- 06 CONTACT -->
+  <section class="section-block" id="contact">
+    <div class="section-title"><span class="section-label">06</span><h2>Contact</h2></div>
+    <div class="contact-block">
+      <div class="contact-initials">LZ</div>
+      <div class="contact-info">
+        <h3>Dr. Lucie Zicha</h3>
+        <p>Email is the fastest way to reach me. Drop by the office if you would rather talk something through in person.</p>
+        <p><a href="mailto:l.zicha@luc.leidenuniv.nl">l.zicha@luc.leidenuniv.nl</a> &nbsp;·&nbsp; LUC, room 04.09</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Quantitative Research Methods · Leiden University College The Hague</span>
+    <span>2026/2027</span>
+  </footer>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════════════════
+   COURSE CONTENT — edit this array only; the page rebuilds itself.
+   type   "reading" | "video" | "script"
+   src    video: the Dropbox link ending ?raw=1  (plays inside the page)
+   drive  a PDF on Google Drive: just the file ID (opens inside the page)
+   url    fallback / download link
+   group  optional sub-heading within a week
+   ════════════════════════════════════════════════════════════════════════════ */
+const WEEKS = [
+  {
+    n: 1, short: "Scientific reasoning",
+    topic: "Introduction to Scientific Reasoning",
+    note: "",
+    items: [
+      {type:"reading", name:"Lakatos — Science and Pseudoscience (1973)", required:true,
+       meta:"Open University talk, transcript · PDF",
+       url:"http://www.inf.fu-berlin.de/lehre/pmo/eng/Lakatos-Science.pdf"},
+      {type:"reading", name:"Feynman — Cargo Cult Science (1974)", required:true,
+       meta:"Caltech commencement address, Engineering and Science 37(7)",
+       url:"https://calteches.library.caltech.edu/51/2/CargoCult.htm"},
+      {type:"reading", name:"Chapter on Argument, Hypotheses and Measurement", meta:"PDF", required:true,
+       url:"https://drive.google.com/file/d/1QlauT3t7s1YuaO8IN955Lak2CCPjzb62/view?usp=sharing"},
+      {type:"reading", name:"Popper, Kuhn and Lakatos — reading introduction", recommended:true,
+       meta:"Background to the exchange, the course reader, and additional bibliography",
+       url:"qrm_week1_popper_kuhn_lakatos.html"}
+    ]
+  },
+  {
+    n: 2, short: "Study design",
+    topic: "Thinking Through Quantitative Study Design",
+    note: "No lecture video this week",
+    items: [
+      {type:"reading", name:"Utts & Heckard, ch. 5 — Sampling: surveys and how to ask questions", meta:"Textbook", required:true},
+      {type:"reading", name:"Utts & Heckard, ch. 6 — Gathering useful data for examining relationships", meta:"Textbook", required:true},
+      {type:"reading", name:"Geddes (1990) — How the cases you choose affect the answers you get", meta:"Political Analysis 2, 131–150", required:true}
+    ]
+  },
+  {
+    n: 3, short: "Visualizing data",
+    topic: "Visualizing Data",
+    note: "No lecture video this week.",
+    items: [
+      {type:"reading", name:"Wainer (1984) — How to display data badly", meta:"The American Statistician 38(2), 137–147", required:true},
+      {type:"reading", name:"Wainer & Zwerling", meta:"PDF", required:true,
+       drive:"1-xnGgCg2wHWeiBa1qImkA2lw8XSWjt15"}
+    ]
+  },
+  {
+    n: 4, short: "Linear regression",
+    topic: "Fundamentals of Multivariate Linear Regression",
+    items: [
+      {type:"video", name:"Regression basics", meta:"Review", required:true,
+       src:"https://www.dropbox.com/s/emrpwy8j68trdcs/linear_regression_basics_video.mp4?raw=1",
+       url:"https://www.dropbox.com/s/emrpwy8j68trdcs/linear_regression_basics_video.mp4?dl=0"},
+      {type:"video", name:"Statistical significance", meta:"Review", required:true,
+       src:"https://www.dropbox.com/s/m7i1rpehiauyjc9/Linear%20Regression_statistical_significance.mp4?raw=1",
+       url:"https://www.dropbox.com/s/m7i1rpehiauyjc9/Linear%20Regression_statistical_significance.mp4?dl=0"},
+      {type:"video", name:"Multiple regression and its assumptions", meta:"New", required:true,
+       src:"https://www.dropbox.com/s/fbsazhhmwbso428/Multivariate%20Regression_assumptions_video_slides.mp4?raw=1",
+       url:"https://www.dropbox.com/s/fbsazhhmwbso428/Multivariate%20Regression_assumptions_video_slides.mp4?dl=0"},
+      {type:"video", name:"Residuals, part 1", meta:"New", required:true,
+       src:"https://www.dropbox.com/s/hrktoeasuima2pu/residuals_1_video_slides.mp4?raw=1",
+       url:"https://www.dropbox.com/s/hrktoeasuima2pu/residuals_1_video_slides.mp4?dl=0"},
+      {type:"video", name:"Residuals, part 2", meta:"New", required:true,
+       src:"https://www.dropbox.com/s/lwtpcvt1zxhgl84/residuals_part2_videoslides.mp4?raw=1",
+       url:"https://www.dropbox.com/s/lwtpcvt1zxhgl84/residuals_part2_videoslides.mp4?dl=0"},
+      {type:"reading", name:"Multiple regression", meta:"Recommended · PDF",
+       drive:"1hzBwD73F3CYXPuCDxqfTq4ujvwzRrPu5"},
+      {type:"reading", name:"Lecture notes on statistical inference",
+       meta:"Standard errors, t-statistics, p-values, confidence intervals"}
+    ]
+  },
+  {
+    n: 5, short: "Special issues",
+    topic: "Special Issues in Regression Analysis",
+    note: "",
+    items: [
+      {group:"Regression with Categorical Variables",
+       type:"video", name:"Regression with categorical variables", required:true,
+       src:"https://www.dropbox.com/s/gkj8l249zrz02k0/regression_categorical_variables_video.mp4?raw=1",
+       url:"https://www.dropbox.com/s/gkj8l249zrz02k0/regression_categorical_variables_video.mp4?dl=0"},
+      {group:"Regression with Categorical Variables",
+       type:"reading", name:"Dougherty, ch. 5 — Dummy variables (5.1–5.3)",
+       meta:"Introduction to Econometrics, 3rd ed.", required:true,
+       drive:"1ARKvvnvih3y_0htZJeJylbKIusX9fNAq"},
+      {group:"Omitted Variables and Multicollinearity",
+       type:"video", name:"Issues in multiple regression", required:true,
+       src:"https://www.dropbox.com/s/j6yt4dqi73hl035/Issues%20in%20Multiple%20Regression_videoslides.mp4?raw=1",
+       url:"https://www.dropbox.com/s/j6yt4dqi73hl035/Issues%20in%20Multiple%20Regression_videoslides.mp4?dl=0"}
+    ]
+  },
+  {
+    n: 6, short: "Comparing groups",
+    topic: "Comparing Groups: ANOVA",
+    note: "No lecture video this week.",
+    items: [
+      {type:"reading", name:"Utts & Heckard, ch. 16 — Analysis of variance", meta:"Textbook", required:true}
+    ]
+  },
+  {
+    n: 7, short: "Logistic regression",
+    topic: "Chi-squared and Logistic Regression",
+    note: "",
+    items: [
+      {type:"video", name:"Logistic regression lecture", required:true,
+       src:"https://www.dropbox.com/s/co2km21sdt1pbr4/logreg_lecture_slides_video.mp4?raw=1",
+       url:"https://www.dropbox.com/s/co2km21sdt1pbr4/logreg_lecture_slides_video.mp4?dl=0"},
+      {type:"reading", name:"Handout: interpreting odds and odds ratios", meta:"PDF", required:true,
+       drive:"1Gtov3-WzeWsLY4FdwtMRnP-yrnu7SBRB"}
+    ]
+  }
+];
+
+/* ── render ────────────────────────────────────────────────────────────── */
+const TYPE = {reading:["Reading","type-doc"], video:["Video","type-video"], script:["R script","type-doc"]};
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+function rowHTML(it){
+  const [label, cls] = TYPE[it.type];
+  const kind = it.src ? "video" : (it.drive ? "doc" : null);
+  const source = it.src ? it.src : (it.drive ? `https://drive.google.com/file/d/${it.drive}/preview` : "");
+  const req = it.required ? `<span class="res-req">Required</span>`
+            : (it.recommended ? `<span class="res-req rec">Recommended</span>` : "");
+  const desc = it.meta || (kind || it.url ? "" : "Available from the library or Brightspace");
+
+  let action = "";
+  if (kind)      action = `<button class="btn-dl" data-open>${kind === "video" ? "Watch &rarr;" : "Read &rarr;"}</button>`;
+  else if (it.url) action = `<a class="btn-dl" href="${esc(it.url)}" target="_blank" rel="noopener">Open &rarr;</a>`;
+
+  return `<div class="res-row${kind || it.url ? "" : " offline"}"${kind ? ` data-kind="${kind}" data-source="${esc(source)}" data-fallback="${esc(it.url||"")}"` : ""}>
+      <span class="res-type ${cls}">${label}</span>
+      <div class="res-info">
+        <span class="res-name">${esc(it.name)}${req}</span>
+        ${desc ? `<span class="res-desc">${esc(desc)}</span>` : ""}
+      </div>
+      ${action}
+    </div>${kind ? `<div class="stage"></div>` : ""}`;
+}
+
+function bodyHTML(w){
+  const blocks = [];
+  w.items.forEach(it => {
+    const g = it.group || "";
+    const last = blocks[blocks.length - 1];
+    if (last && last.title === g) last.items.push(it);
+    else blocks.push({title:g, items:[it]});
+  });
+  const note = w.note ? `<p class="week-note">${esc(w.note)}</p>` : "";
+  return note + blocks.map(b => {
+    const heading = b.title ? esc(b.title)
+      : [...new Set(b.items.map(i => TYPE[i.type][0]))].join(" &amp; ");
+    return `<div class="res-section">${heading}</div>
+      <div class="res-list">${b.items.map(rowHTML).join("")}</div>`;
+  }).join("");
+}
+
+document.getElementById("weekList").innerHTML = WEEKS.map((w, i) => `
+  <div class="week-item${i === 0 ? " open" : ""}" id="wk${w.n}">
+    <button class="week-trigger" aria-expanded="${i === 0}" aria-controls="wkbody${w.n}">
+      <div class="week-marker">
+        <span class="wk-label">Week</span>
+        <span class="wk-num">${w.n}</span>
+      </div>
+      <div class="week-info">
+        <div class="week-title">${esc(w.topic)}</div>
+        <div class="week-subtitle">${w.tags}</div>
+      </div>
+      <div class="week-chevron">&#9660;</div>
+    </button>
+    <div class="week-body" id="wkbody${w.n}">${bodyHTML(w)}</div>
+  </div>`).join("");
+
+/* ── accordion ─────────────────────────────────────────────────────────── */
+document.querySelectorAll(".week-trigger").forEach(t => t.addEventListener("click", () => {
+  const item = t.closest(".week-item");
+  const open = item.classList.toggle("open");
+  t.setAttribute("aria-expanded", String(open));
+}));
+
+/* ── play a video or read a document, on demand ────────────────────────────
+   Nothing is fetched until the button is clicked, and closing destroys the
+   element again. That keeps the page fast and ties Dropbox bandwidth to
+   actual views rather than page loads. */
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-open]");
+  if (!btn) return;
+  const row   = btn.closest(".res-row");
+  const stage = row.nextElementSibling;
+  const kind  = row.dataset.kind;
+  const back  = row.dataset.fallback;
+
+  if (stage.classList.contains("open")) {
+    stage.classList.remove("open");
+    stage.innerHTML = "";
+    btn.innerHTML = kind === "video" ? "Watch &rarr;" : "Read &rarr;";
+    return;
+  }
+  if (kind === "video") {
+    const v = document.createElement("video");
+    v.controls = true; v.autoplay = true; v.preload = "metadata"; v.playsInline = true;
+    v.src = row.dataset.source;
+    v.addEventListener("error", () => {
+      stage.innerHTML = `<div class="fail">This video would not play in the page.
+        ${back ? `<a href="${back}" target="_blank" rel="noopener">Open it on Dropbox instead &rarr;</a>` : ""}</div>`;
+    });
+    stage.appendChild(v);
+  } else {
+    const f = document.createElement("iframe");
+    f.src = row.dataset.source; f.loading = "lazy";
+    f.title = row.querySelector(".res-name").textContent;
+    stage.appendChild(f);
+  }
+  stage.classList.add("open");
+  btn.textContent = "Close";
+});
+
+/* ── mobile nav ────────────────────────────────────────────────────────── */
+const navToggle = document.getElementById("navToggle");
+const navLinks  = document.getElementById("navLinks");
+navToggle.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", String(open));
+});
+navLinks.addEventListener("click", e => {
+  if (e.target.tagName === "A") { navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
+});
+</script>
+</body>
+</html>
