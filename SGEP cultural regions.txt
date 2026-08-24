@@ -1,0 +1,183 @@
+country	cultural region	alternative region
+Australia	Protestant West	Protestant West
+Austria	Protestant West	Catholic West
+Belgium	Protestant West	Catholic West
+Canada	Protestant West	Protestant West
+Denmark	Protestant West	Protestant West
+England	Protestant West	Protestant West
+Estonia	Protestant West	NA
+Finland	Protestant West	NA
+Germany	Protestant West	Protestant West
+Iceland	Protestant West	Protestant West
+Ireland	Protestant West	Catholic West
+Latvia	Protestant West	NA
+Liechtenstein	Protestant West	Catholic West
+Luxembourg	Protestant West	Catholic West
+Netherlands	Protestant West	Protestant West
+New Zealand	Protestant West	Protestant West
+Norway	Protestant West	Protestant West
+Scotland	Protestant West	Protestant West
+Sweden	Protestant West	Protestant West
+Switzerland	Protestant West	Catholic West
+United Kingdom	Protestant West	Protestant West
+United States	Protestant West	Protestant West
+Czech Republic	Catholic West	Catholic West
+France	Catholic West	Catholic West
+Hungary	Catholic West	Catholic West
+Italy	Catholic West	Catholic West
+Lithuania	Catholic West	Catholic West
+Malta	Catholic West	Catholic West
+Poland	Catholic West	Catholic West
+Portugal	Catholic West	Catholic West
+Slovakia	Catholic West	Catholic West
+Slovenia	Catholic West	Catholic West
+Spain	Catholic West	Catholic West
+Antigua and Barbuda	Latin America	Latin America
+Argentina	Latin America	Latin America
+Aruba	Latin America	Latin America
+Bahamas	Latin America	Latin America
+Barbados	Latin America	Latin America
+Belize	Latin America	Latin America
+Bolivia	Latin America	Latin America
+Brazil	Latin America	Latin America
+Chile	Latin America	Latin America
+Colombia	Latin America	Latin America
+Costa Rica	Latin America	Latin America
+Cuba	Latin America	Latin America
+Dominica	Latin America	Latin America
+Dominican Republic	Latin America	Latin America
+Ecuador	Latin America	Latin America
+El Salvador	Latin America	Latin America
+Grenada	Latin America	Latin America
+Guatemala	Latin America	Latin America
+Guyana	Latin America	Latin America
+Haiti	Latin America	Latin America
+Honduras	Latin America	Latin America
+Jamaica	Latin America	Latin America
+Mexico	Latin America	Latin America
+Miranda_Venezuela	Latin America	Latin America
+Netherlands Antilles	Latin America	Latin America
+Nicaragua	Latin America	Latin America
+Panama	Latin America	Latin America
+Papua New Guinea	Latin America	Latin America
+Paraguay	Latin America	Latin America
+Peru	Latin America	Latin America
+Puerto Rico	Latin America	Latin America
+Saint Kitts and Nevis	Latin America	Latin America
+Saint Lucia	Latin America	Latin America
+Suriname	Latin America	Latin America
+Trinidad and Tobago	Latin America	Latin America
+Uruguay	Latin America	Latin America
+Venezuela	Latin America	Latin America
+Armenia	Orthodox Europe	Orthodox Europe
+Belarus	Orthodox Europe	Orthodox Europe
+Bosnia Herzegovina	Orthodox Europe	Orthodox Europe
+Bulgaria	Orthodox Europe	Orthodox Europe
+Croatia	Orthodox Europe	Orthodox Europe
+Cyprus	Orthodox Europe	Orthodox Europe
+Georgia	Orthodox Europe	Orthodox Europe
+Greece	Orthodox Europe	Orthodox Europe
+Kosovo	Orthodox Europe	Orthodox Europe
+Macedonia	Orthodox Europe	Orthodox Europe
+Moldova	Orthodox Europe	Orthodox Europe
+Montenegro	Orthodox Europe	Orthodox Europe
+Romania	Orthodox Europe	Orthodox Europe
+Russia	Orthodox Europe	Orthodox Europe
+Serbia	Orthodox Europe	Orthodox Europe
+Ukraine	Orthodox Europe	Orthodox Europe
+Yugoslavia	Orthodox Europe	Orthodox Europe
+Afghanistan	Muslim Middle-East	Muslim Middle-East
+Albania	Muslim Middle-East	Muslim Middle-East
+Algeria	Muslim Middle-East	Muslim Middle-East
+Azerbaijan	Muslim Middle-East	Muslim Middle-East
+Bahrain	Muslim Middle-East	Muslim Middle-East
+Chad	Muslim Middle-East	Muslim Middle-East
+Egypt	Muslim Middle-East	Muslim Middle-East
+Iran	Muslim Middle-East	Muslim Middle-East
+Iraq	Muslim Middle-East	Muslim Middle-East
+Jordan	Muslim Middle-East	Muslim Middle-East
+Kazakhstan	Muslim Middle-East	Muslim Middle-East
+Kuwait	Muslim Middle-East	Muslim Middle-East
+Kyrgyzstan	Muslim Middle-East	Muslim Middle-East
+Lebanon	Muslim Middle-East	Muslim Middle-East
+Libya	Muslim Middle-East	Muslim Middle-East
+Mauritania	Muslim Middle-East	Muslim Middle-East
+Morocco	Muslim Middle-East	Muslim Middle-East
+Oman	Muslim Middle-East	Muslim Middle-East
+Pakistan	Muslim Middle-East	Muslim Middle-East
+Palestine	Muslim Middle-East	Muslim Middle-East
+Qatar	Muslim Middle-East	Muslim Middle-East
+Saudi Arabia	Muslim Middle-East	Muslim Middle-East
+Sudan	Muslim Middle-East	Muslim Middle-East
+Syria	Muslim Middle-East	Muslim Middle-East
+Tajikistan	Muslim Middle-East	Muslim Middle-East
+Tunisia	Muslim Middle-East	Muslim Middle-East
+Turkey	Muslim Middle-East	Muslim Middle-East
+United Arab Emirates	Muslim Middle-East	Muslim Middle-East
+Uzbekistan	Muslim Middle-East	Muslim Middle-East
+Yemen	Muslim Middle-East	Muslim Middle-East
+Angola	Sub-Saharan Africa	Sub-Saharan Africa
+Botswana	Sub-Saharan Africa	Sub-Saharan Africa
+Burkina Faso	Sub-Saharan Africa	Sub-Saharan Africa
+Burundi	Sub-Saharan Africa	Sub-Saharan Africa
+Cameroon	Sub-Saharan Africa	Sub-Saharan Africa
+Central African Republic	Sub-Saharan Africa	Sub-Saharan Africa
+Congo	Sub-Saharan Africa	Sub-Saharan Africa
+Democratic Republic of Congo	Sub-Saharan Africa	Sub-Saharan Africa
+Eswatini	Sub-Saharan Africa	Sub-Saharan Africa
+Ethiopia	Sub-Saharan Africa	Sub-Saharan Africa
+Gabon	Sub-Saharan Africa	Sub-Saharan Africa
+Gambia	Sub-Saharan Africa	Sub-Saharan Africa
+Ghana	Sub-Saharan Africa	Sub-Saharan Africa
+Ivory Coast	Sub-Saharan Africa	Sub-Saharan Africa
+Kenya	Sub-Saharan Africa	Sub-Saharan Africa
+Lesotho	Sub-Saharan Africa	Sub-Saharan Africa
+Liberia	Sub-Saharan Africa	Sub-Saharan Africa
+Malawi	Sub-Saharan Africa	Sub-Saharan Africa
+Mali	Sub-Saharan Africa	Sub-Saharan Africa
+Mozambique	Sub-Saharan Africa	Sub-Saharan Africa
+Namibia	Sub-Saharan Africa	Sub-Saharan Africa
+Nigeria	Sub-Saharan Africa	Sub-Saharan Africa
+Rwanda	Sub-Saharan Africa	Sub-Saharan Africa
+Sao Tome and Principe	Sub-Saharan Africa	Sub-Saharan Africa
+Senegal	Sub-Saharan Africa	Sub-Saharan Africa
+Sierra Leone	Sub-Saharan Africa	Sub-Saharan Africa
+South Africa	Sub-Saharan Africa	Sub-Saharan Africa
+Tanzania	Sub-Saharan Africa	Sub-Saharan Africa
+Togo	Sub-Saharan Africa	Sub-Saharan Africa
+Uganda	Sub-Saharan Africa	Sub-Saharan Africa
+Zambia	Sub-Saharan Africa	Sub-Saharan Africa
+Zimbabwe	Sub-Saharan Africa	Sub-Saharan Africa
+Bangladesh	Asia	Muslim Middle-East
+Bhutan	Asia	Asia
+Brunei	Asia	Muslim Middle-East
+Cambodia	Asia	Asia
+China	Asia	Asia
+Chinese Taipei	Asia	Asia
+Himachal Pradesh_India	Asia	Asia
+Hong Kong	Asia	Asia
+India	Asia	Asia
+Indonesia	Asia	Muslim Middle-East
+Japan	Asia	Asia
+Laos	Asia	Asia
+Macao	Asia	Asia
+Malaysia	Asia	Muslim Middle-East
+Maldives	Asia	Muslim Middle-East
+Mongolia	Asia	Asia
+Myanmar	Asia	Asia
+Nepal	Asia	Asia
+Philippines	Asia	NA
+Shanghai_China	Asia	Asia
+Singapore	Asia	Asia
+South Korea	Asia	Asia
+Sri Lanka	Asia	Asia
+Taiwan	Asia	Asia
+Tamil Nadu_India	Asia	Asia
+Thailand	Asia	Asia
+Timor-Leste	Asia	NA
+Vietnam	Asia	Asia
+Cape Verde	NA	NA
+Fiji	NA	NA
+Israel	NA	NA
+Madagascar	NA	NA
+Mauritius	NA	NA
